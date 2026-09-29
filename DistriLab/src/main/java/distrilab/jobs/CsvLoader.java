@@ -50,7 +50,8 @@ public final class CsvLoader {
             return skippedSamples;
         }
     }
-
+/*Stores valid numeric values together with information about skipped CSV cells.
+ */
     public static NumberData readNumbers(Path file) throws IOException {
         List<String> tokens = new ArrayList<>();
         List<String> skipped = new ArrayList<>();
