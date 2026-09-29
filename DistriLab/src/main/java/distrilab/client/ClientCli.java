@@ -117,18 +117,28 @@ public final class ClientCli {
         return JobFactory.fromText(type, String.join(" ", args.subList(1, args.size())));
     }
 
+
+
+
     private static Job jobFromCsv(List<String> args) throws InvalidJobException, IOException {
+        /*validate argument count and parse target job type*/
         requireArgs(args, 2, "csv <TYPE> <file.csv>");
         JobType type = JobType.parse(args.get(0));
         Path file = Paths.get(args.get(1));
+
+        /*Read dataset and warn user if any non-numeric cells were ignored*/
         CsvLoader.NumberData data = CsvLoader.readNumbers(file);
         if (data.getSkippedCells() > 0) {
             System.out.println("Skipped " + data.getSkippedCells() + " non-numeric cell(s) " + data.getSkippedSamples());
         }
+
+        /*For range-based jobs (e.g., PRIMESUM), restrict inputs to the first two numbers (start, end)*/
         List<String> tokens = data.getTokens();
         if (type.takesRange() && tokens.size() > 2) {
             tokens = tokens.subList(0, 2);
         }
+
+        /* Print summary and instantiate Job via factory */
         System.out.println("Loaded " + tokens.size() + " number(s) from " + file);
         return JobFactory.create(type, tokens);
     }
