@@ -26,7 +26,7 @@ public final class CsvLoader {
     private CsvLoader() {
     }
 
-    /** Numbers read from a CSV file plus what had to be skipped. */
+    
     public static final class NumberData {
         private final List<String> tokens;
         private final int skippedCells;
