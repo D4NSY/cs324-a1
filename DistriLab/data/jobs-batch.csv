@@ -1,0 +1,16 @@
+# DistriLab batch file: one job per line -> TYPE,arguments...
+# All jobs are submitted at the same time. 12 jobs > 5 per term, so you will
+# see at least two elections and three coordinators.
+type,arguments
+PRIMESUM,1,1000
+PRIMESUM,1,5000000
+MAX,17,4,99.5,-12,23,8,42
+PRIMECOUNT,2,3,4,5,6,7,8,9,10,11,12,13
+PRIMESUM,1000000,2000000
+MAX,3,1,4,1,5,9,2,6,5,3,5
+PRIMECOUNT,97,98,99,100,101,102,103
+PRIMESUM,1,100
+MAX,-5,-2,-9
+PRIMESUM,1,10000000
+PRIMECOUNT,7919,7920,7921,7927,7933
+MAX,1000000,999999.99,1000000.01
